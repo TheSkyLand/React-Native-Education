@@ -1,5 +1,6 @@
 export type WeatherDto = {
-    datetime: string;
-    sunset: string;
+
     temp: string;
+    tempmin: string;
+    tempmax: string;
 }
