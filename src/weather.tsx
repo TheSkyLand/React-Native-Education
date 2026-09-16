@@ -3,6 +3,7 @@ import { View, Text, Image } from "react-native"
 import { useEffect } from "react"
 import Geolocation from '@react-native-community/geolocation'
 import { WeatherDto } from "./types/weather.types"
+import WeatherDisplay from "@/components/weatherDisplay"
 
 const Weather = () => {
     const [data, setData] = useState<WeatherDto[]>();
@@ -55,21 +56,46 @@ const Weather = () => {
 
     return (
         <View>
-            <View>Погода на {getDayOfWeek()}:</View>
-            {data?.map((item, key) => (
-                <View
+            <View
+            >Погода на неделю</View>
+            <View
                 style={{
-                    borderColor: "black",
-                    borderWidth: 1
+                    display: "flex",
+                    justifyContent: "center",
+                    padding: 25,
+                    flexWrap: "wrap",
+                    flexDirection: "row"
                 }}
-                >
-                    <View>температура {item.temp}</View>
-                    <View>мин. температура {item.tempmin}</View>
-                    <View>макс. температура {item.tempmax}</View>
-                </View>
-            ))}
 
-            
+            >
+                {data?.map((item, key) => (
+                    <WeatherDisplay
+                        key={key}
+                        day={item.days}
+                        temp={item.temp}
+                        tempmin={item.tempmin}
+                        tempmax={item.tempmax}
+                    />
+                ))}
+
+
+            </View>
+            погода на сегодня ({getDayOfWeek()})    
+            <View>
+                {data?.filter(item => +new Date(item.days) === +new Date(currentDate))
+                .map(item => (
+                    <WeatherDisplay
+                    day={item.days}
+                    temp={item.temp}
+                    tempmin={item.tempmin}
+                    tempmax={item.tempmax}
+                    />
+                ))
+                }
+            </View>
+
+
+
 
 
         </View>
