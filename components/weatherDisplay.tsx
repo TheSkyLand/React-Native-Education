@@ -43,10 +43,10 @@ const styles = StyleSheet.create({
     card: {
         backgroundColor: '#F8FAFC',
         borderRadius: 12,
-        width: '25%', // Карточка занимает всю ширину контейнера
+        width: '75%', // Карточка занимает всю ширину контейнера
         paddingVertical: 12,
         paddingHorizontal: 16,
-        marginVertical: 4,
+        margin: 8,
         flexDirection: 'row', 
         alignItems: 'center',
         justifyContent: 'space-between', 
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
         borderColor: '#E2E8F0',
     },
     dateContainer: {
-        width: '30%',
+        width: '25%',
     },
     weekdayText: {
         fontSize: 14,
@@ -72,7 +72,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#0F172A',
         textAlign: 'center',
-        width: '40%',
+        width: '100%',
+        margin: 5
     },
     rangeContainer: {
         alignItems: 'flex-end',
